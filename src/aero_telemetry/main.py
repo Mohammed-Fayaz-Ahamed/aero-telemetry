@@ -8,6 +8,8 @@ from fastapi import FastAPI
 
 from aero_telemetry.api import health
 from aero_telemetry.api import aircraft as aircraft_api
+from aero_telemetry.api import test_session as test_session_api
+from aero_telemetry.api import telemetry as telemetry_api
 
 
 @asynccontextmanager
@@ -24,10 +26,6 @@ async def lifespan(app: FastAPI):
 
 
 def create_app() -> FastAPI:
-    """
-    Factory function to create the FastAPI application.
-    Allows test clients to create isolated app instances.
-    """
     app = FastAPI(
         title="aero-telemetry",
         description="Lightweight telemetry ingestion for AAM prototyping",
@@ -38,7 +36,8 @@ def create_app() -> FastAPI:
     # Register routers
     app.include_router(health.router, tags=["health"])
     app.include_router(aircraft_api.router, prefix="/aircraft", tags=["aircraft"])
-    
+    app.include_router(test_session_api.router, prefix="/test-sessions", tags=["test-sessions"])
+    app.include_router(telemetry_api.router, prefix="/telemetry", tags=["telemetry"])
     return app
 
 
