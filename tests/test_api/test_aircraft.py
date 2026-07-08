@@ -5,7 +5,7 @@ Tests for Aircraft API endpoints.
 import pytest
 import httpx
 from aero_telemetry.main import create_app
-
+import uuid
 
 @pytest.fixture
 async def client():
@@ -29,8 +29,9 @@ async def test_health_check(client):
 @pytest.mark.asyncio
 async def test_create_aircraft(client):
     """Test creating an aircraft."""
+    aircraft_id = f"test-{uuid.uuid4().hex[:8]}"
     payload = {
-        "aircraft_id": "test-001",
+        "aircraft_id": aircraft_id,
         "name": "Test Aircraft",
         "aircraft_type": "multicopter",
         "propulsion_type": "battery",
@@ -40,29 +41,27 @@ async def test_create_aircraft(client):
     response = await client.post("/aircraft", json=payload)
     assert response.status_code == 201
     data = response.json()
-    assert data["aircraft_id"] == "test-001"
+    assert data["aircraft_id"] == aircraft_id
     assert data["name"] == "Test Aircraft"
 
 
 @pytest.mark.asyncio
 async def test_create_aircraft_duplicate(client):
     """Test creating duplicate aircraft returns 409."""
+    aircraft_id = f"dup-{uuid.uuid4().hex[:8]}"
     payload = {
-        "aircraft_id": "dup-001",
+        "aircraft_id": aircraft_id,
         "name": "Duplicate",
         "aircraft_type": "multicopter",
         "propulsion_type": "battery",
         "mass_kg": 900.0,
         "max_takeoff_mass_kg": 1300.0,
     }
-    # First creation
     response = await client.post("/aircraft", json=payload)
     assert response.status_code == 201
     
-    # Duplicate
     response = await client.post("/aircraft", json=payload)
     assert response.status_code == 409
-
 
 @pytest.mark.asyncio
 async def test_get_aircraft(client):

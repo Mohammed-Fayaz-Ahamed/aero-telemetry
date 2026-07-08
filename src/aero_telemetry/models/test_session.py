@@ -16,7 +16,7 @@ class TestSession(BaseModel):
     Example:
         >>> session = TestSession(
         ...     session_id="ts-20240706-001",
-        ...     aircraft_id="bluj-proto-001",
+        ...     aircraft_id="comp-proto-001",
         ...     test_type="hover",
         ...     test_objective="Validate battery discharge profile at 80% load",
         ...     start_time=datetime.now(),
@@ -36,7 +36,7 @@ class TestSession(BaseModel):
         min_length=1,
         max_length=64,
         description="Reference to Aircraft.aircraft_id",
-        examples=["bluj-proto-001"],
+        examples=["comp-proto-001"],
     )
     
     test_type: Literal[
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     # Valid: planned session
     s1 = TestSession(
         session_id="ts-001",
-        aircraft_id="bluj-proto-001",
+        aircraft_id="comp-proto-001",
         test_type="hover",
         test_objective="Battery discharge at 80% load",
     )
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     now = datetime.now()
     s2 = TestSession(
         session_id="ts-002",
-        aircraft_id="bluj-proto-001",
+        aircraft_id="comp-proto-001",
         test_type="transition",
         test_objective="Tilt mechanism validation",
         start_time=now,
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     try:
         bad = TestSession(
             session_id="ts-bad",
-            aircraft_id="bluj-proto-001",
+            aircraft_id="comp-proto-001",
             test_type="hover",
             test_objective="Bad test",
             start_time=now,
@@ -166,7 +166,7 @@ if __name__ == "__main__":
     try:
         bad2 = TestSession(
             session_id="ts-bad2",
-            aircraft_id="bluj-proto-001",
+            aircraft_id="comp-proto-001",
             test_type="hover",
             test_objective="Bad test",
             status="completed",

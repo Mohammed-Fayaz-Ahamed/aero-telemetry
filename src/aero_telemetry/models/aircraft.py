@@ -13,8 +13,8 @@ class Aircraft(BaseModel):
     
     Example:
         >>> aircraft = Aircraft(
-        ...     aircraft_id="bluj-proto-001",
-        ...     name="BluJ Hop Battery Variant",
+        ...     aircraft_id="comp-proto-001",
+        ...     name="comp Hop Battery Variant",
         ...     aircraft_type="multicopter",
         ...     propulsion_type="battery",
         ...     mass_kg=850.0,
@@ -27,7 +27,7 @@ class Aircraft(BaseModel):
         min_length=1,
         max_length=64,
         description="Unique identifier for this aircraft configuration",
-        examples=["bluj-proto-001"],
+        examples=["comp-proto-001"],
     )
     
     name: str = Field(
@@ -35,7 +35,7 @@ class Aircraft(BaseModel):
         min_length=1,
         max_length=128,
         description="Human-readable name",
-        examples=["BluJ Hop Battery Variant"],
+        examples=["comp Hop Battery Variant"],
     )
     
     aircraft_type: Literal["multicopter", "fixed_wing", "tiltrotor", "lift_cruise"] = Field(
@@ -82,8 +82,8 @@ class Aircraft(BaseModel):
 if __name__ == "__main__":
     # Valid aircraft
     ac = Aircraft(
-        aircraft_id="bluj-proto-001",
-        name="BluJ Hop Battery Variant",
+        aircraft_id="comp-proto-001",
+        name="comp Hop Battery Variant",
         aircraft_type="multicopter",
         propulsion_type="battery",
         mass_kg=850.0,

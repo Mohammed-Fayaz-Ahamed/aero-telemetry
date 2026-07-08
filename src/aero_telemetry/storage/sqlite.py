@@ -144,7 +144,7 @@ if __name__ == "__main__":
         
         # Create
         ac = Aircraft(
-            aircraft_id="bluj-test-001",
+            aircraft_id="comp-test-001",
             name="Test Aircraft",
             aircraft_type="multicopter",
             propulsion_type="battery",
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         print(f"Created: {created.aircraft_id}")
         
         # Get
-        retrieved = await storage.get("bluj-test-001")
+        retrieved = await storage.get("comp-test-001")
         print(f"Retrieved: {retrieved.name if retrieved else 'NOT FOUND'}")
         
         # List
@@ -164,15 +164,15 @@ if __name__ == "__main__":
         
         # Update
         ac.name = "Updated Name"
-        updated = await storage.update("bluj-test-001", ac)
+        updated = await storage.update("comp-test-001", ac)
         print(f"Updated: {updated.name if updated else 'FAILED'}")
         
         # Delete
-        deleted = await storage.delete("bluj-test-001")
+        deleted = await storage.delete("comp-test-001")
         print(f"Deleted: {deleted}")
         
         # Verify deletion
-        gone = await storage.get("bluj-test-001")
+        gone = await storage.get("comp-test-001")
         print(f"After delete: {'FOUND' if gone else 'NOT FOUND'}")
         
         await storage.close()
