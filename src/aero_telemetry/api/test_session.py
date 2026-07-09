@@ -20,12 +20,6 @@ def get_storage() -> SQLiteTestSessionStorage:
     return _storage
 
 
-@router.on_event("startup")
-async def init_storage():
-    storage = get_storage()
-    await storage.init_db()
-
-
 @router.post(
     "",
     response_model=TestSession,

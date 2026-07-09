@@ -23,13 +23,6 @@ def get_storage() -> SQLiteAircraftStorage:
     return _storage
 
 
-@router.on_event("startup")
-async def init_storage():
-    """Initialize database on startup."""
-    storage = get_storage()
-    await storage.init_db()
-
-
 @router.post(
     "",
     response_model=Aircraft,

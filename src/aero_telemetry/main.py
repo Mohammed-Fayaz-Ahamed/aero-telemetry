@@ -10,6 +10,9 @@ from aero_telemetry.api import health
 from aero_telemetry.api import aircraft as aircraft_api
 from aero_telemetry.api import test_session as test_session_api
 from aero_telemetry.api import telemetry as telemetry_api
+from aero_telemetry.storage.sqlite import SQLiteAircraftStorage
+from aero_telemetry.storage.test_session import SQLiteTestSessionStorage
+from aero_telemetry.storage.telemetry import SQLiteTelemetryStorage
 
 
 @asynccontextmanager
@@ -20,6 +23,22 @@ async def lifespan(app: FastAPI):
     """
     # Startup
     print("Starting aero-telemetry server...")
+    # Initialize all databases
+    aircraft_storage = SQLiteAircraftStorage()
+    await aircraft_storage.init_db()
+    
+    session_storage = SQLiteTestSessionStorage()
+    await session_storage.init_db()
+    
+    telemetry_storage = SQLiteTelemetryStorage()
+    await telemetry_storage.init_db()
+    
+    yield
+    
+    print("Shutting down aero-telemetry server...")
+    await aircraft_storage.close()
+    await session_storage.close()
+    await telemetry_storage.close()
     yield
     # Shutdown
     print("Shutting down aero-telemetry server...")
