@@ -1,0 +1,107 @@
+{
+  "aircraft": {
+    "multicopter_battery": {
+      "aircraft_id": "demo-mc-001",
+      "name": "Demo Multicopter Battery",
+      "aircraft_type": "multicopter",
+      "propulsion_type": "battery",
+      "mass_kg": 850.0,
+      "max_takeoff_mass_kg": 1200.0
+    },
+    "tiltrotor_hybrid": {
+      "aircraft_id": "demo-tr-001",
+      "name": "Demo Tiltrotor Hybrid",
+      "aircraft_type": "tiltrotor",
+      "propulsion_type": "hybrid",
+      "mass_kg": 1500.0,
+      "max_takeoff_mass_kg": 2200.0
+    }
+  },
+  "test_sessions": {
+    "hover_test": {
+      "session_id": "demo-hover-001",
+      "aircraft_id": "demo-mc-001",
+      "test_type": "hover",
+      "test_objective": "Validate hover stability at 80% throttle",
+      "location_name": "Test Facility Alpha"
+    },
+    "transition_test": {
+      "session_id": "demo-trans-001",
+      "aircraft_id": "demo-tr-001",
+      "test_type": "transition",
+      "test_objective": "Validate tilt mechanism transition from hover to cruise",
+      "location_name": "Test Facility Beta"
+    }
+  },
+  "telemetry": {
+    "battery_only": {
+      "session_id": "demo-hover-001",
+      "battery": {
+        "voltage_v": 540.0,
+        "current_a": 45.2,
+        "soc_percent": 87.5,
+        "temperature_c": 35.0
+      }
+    },
+    "full_flight": {
+      "session_id": "demo-trans-001",
+      "position": {
+        "latitude": 17.4065,
+        "longitude": 78.4772,
+        "altitude_msl_m": 542.0
+      },
+      "attitude": {
+        "roll": 2.5,
+        "pitch": -1.0,
+        "yaw": 95.0
+      },
+      "battery": {
+        "voltage_v": 538.5,
+        "current_a": 120.0,
+        "soc_percent": 72.0,
+        "temperature_c": 42.0
+      },
+      "motors": [
+        {"motor_id": "M1", "rpm": 1850, "current_a": 28.5, "temperature_c": 55.0},
+        {"motor_id": "M2", "rpm": 1860, "current_a": 29.0, "temperature_c": 56.0},
+        {"motor_id": "M3", "rpm": 1845, "current_a": 28.0, "temperature_c": 54.5},
+        {"motor_id": "M4", "rpm": 1855, "current_a": 28.8, "temperature_c": 55.5}
+      ],
+      "imu": {
+        "accel_x_ms2": 0.2,
+        "accel_y_ms2": -0.1,
+        "accel_z_ms2": 9.8,
+        "gyro_x_dps": 0.5,
+        "gyro_y_dps": -0.3,
+        "gyro_z_dps": 0.1
+      },
+      "gps": {
+        "fix_type": "3d",
+        "satellites": 12,
+        "hdop": 1.2
+      }
+    },
+    "batch_battery_degradation": [
+      {
+        "session_id": "demo-hover-001",
+        "battery": {"voltage_v": 540.0, "current_a": 45.0, "soc_percent": 90.0, "temperature_c": 30.0}
+      },
+      {
+        "session_id": "demo-hover-001",
+        "battery": {"voltage_v": 535.0, "current_a": 46.0, "soc_percent": 85.0, "temperature_c": 32.0}
+      },
+      {
+        "session_id": "demo-hover-001",
+        "battery": {"voltage_v": 530.0, "current_a": 47.0, "soc_percent": 80.0, "temperature_c": 34.0}
+      },
+      {
+        "session_id": "demo-hover-001",
+        "battery": {"voltage_v": 525.0, "current_a": 48.0, "soc_percent": 75.0, "temperature_c": 36.0}
+      },
+      {
+        "session_id": "demo-hover-001",
+        "battery": {"voltage_v": 520.0, "current_a": 50.0, "soc_percent": 70.0, "temperature_c": 38.0}
+      }
+    ]
+  }
+}

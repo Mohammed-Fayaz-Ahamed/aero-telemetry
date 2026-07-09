@@ -149,7 +149,7 @@ pytest -v
 
 ## License
 
-MIT
+Apache-2.0
 
 ## Author
 

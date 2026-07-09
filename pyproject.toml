@@ -7,7 +7,7 @@ name = "aero-telemetry"
 version = "0.1.0"
 description = "Lightweight telemetry ingestion for eVTOL and AAM prototyping"
 readme = "README.md"
-license = {text = "MIT"}
+license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
 dependencies = [
     "fastapi>=0.111.0",
