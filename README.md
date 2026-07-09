@@ -6,11 +6,11 @@ Built for eVTOL, drone, and AAM developers who need a fast, zero-config way to c
 
 ## Features
 
-- Ingest telemetry via HTTP — single points or batches
-- Query by session, time range, or aircraft — filter what you need
-- Pydantic validation — catch bad data before it hits your database
-- SQLite by default — zero infrastructure, runs on a laptop
-- FastAPI + async — modern Python, production-ready architecture
+- Ingest telemetry via HTTP - single points or batches
+- Query by session, time range, or aircraft - filter what you need
+- Pydantic validation - catch bad data before it hits your database
+- SQLite by default - zero infrastructure, runs on a laptop
+- FastAPI + async - modern Python, production-ready architecture
 
 ## Quick Start
 
@@ -74,32 +74,32 @@ See `examples/client_example.py` for a full Python client.
 
 ### Health
 
-- `GET /health` — Health check
+- `GET /health` - Health check
 
 ### Aircraft
 
-- `POST /aircraft` — Create aircraft
-- `GET /aircraft/{id}` — Get aircraft
-- `GET /aircraft` — List aircraft
-- `PUT /aircraft/{id}` — Update aircraft
-- `DELETE /aircraft/{id}` — Delete aircraft
+- `POST /aircraft` - Create aircraft
+- `GET /aircraft/{id}` - Get aircraft
+- `GET /aircraft` - List aircraft
+- `PUT /aircraft/{id}` - Update aircraft
+- `DELETE /aircraft/{id}` - Delete aircraft
 
 ### Test Sessions
 
-- `POST /test-sessions` — Create session
-- `GET /test-sessions/{id}` — Get session
-- `GET /test-sessions` — List sessions
-- `GET /test-sessions/aircraft/{id}` — List by aircraft
-- `PUT /test-sessions/{id}` — Update session
-- `DELETE /test-sessions/{id}` — Delete session
+- `POST /test-sessions` - Create session
+- `GET /test-sessions/{id}` - Get session
+- `GET /test-sessions` - List sessions
+- `GET /test-sessions/aircraft/{id}` - List by aircraft
+- `PUT /test-sessions/{id}` - Update session
+- `DELETE /test-sessions/{id}` - Delete session
 
 ### Telemetry
 
-- `POST /telemetry` — Ingest single point
-- `POST /telemetry/batch` — Ingest batch
-- `GET /telemetry` — Query telemetry
-- `GET /telemetry/{id}` — Get point by ID
-- `DELETE /telemetry/{id}` — Delete point
+- `POST /telemetry` - Ingest single point
+- `POST /telemetry/batch` - Ingest batch
+- `GET /telemetry` - Query telemetry
+- `GET /telemetry/{id}` - Get point by ID
+- `DELETE /telemetry/{id}` - Delete point
 
 ## Data Model
 
@@ -115,12 +115,12 @@ A single test event: hover, transition, endurance, etc. Linked to aircraft.
 
 A sensor snapshot at a moment in time. Contains optional nested data:
 
-- position — GPS (lat, lon, altitude)
-- attitude — roll, pitch, yaw
-- battery — voltage, current, SOC, temperature
-- motors — array of motor states
-- imu — accelerometer + gyroscope
-- gps — fix quality, satellites, HDOP
+- position - GPS (lat, lon, altitude)
+- attitude - roll, pitch, yaw
+- battery - voltage, current, SOC, temperature
+- motors - array of motor states
+- imu - accelerometer + gyroscope
+- gps - fix quality, satellites, HDOP
 
 ## Validation
 
@@ -153,4 +153,4 @@ Apache-2.0
 
 ## Author
 
-Mohammed Fayaz Ahamed — Data Engineer
+Mohammed Fayaz Ahamed - Data Engineer
